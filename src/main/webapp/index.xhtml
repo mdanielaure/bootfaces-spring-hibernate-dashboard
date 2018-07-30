@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+
+<h:form id="formEntite" >
+        <table>
+            <tr>
+                <td><h:outputLabel for="entite" value="Entite : " /></td>
+                <td><p:inputText id="entite" value="#{chartViewBean.entite}">
+                </p:inputText>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td><p:commandButton id="addEntite" value="AddEntite" action="#{chartViewBean.addEntite}" ajax="false"/></td>
+                
+            </tr>
+        </table>
+    </h:form>
+    
+    <h:form id="formChart" >
+        <table>
+            <tr>
+                <td><h:outputLabel for="year" value="Year : " /></td>
+                <td><p:inputText id="year" value="#{chartViewBean.year}">
+                </p:inputText>
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td><p:commandButton id="send" value="Send" action="#{chartViewBean.refreshChart}" ajax="false"/></td>
+                
+            </tr>
+        </table>
+    </h:form>
+    
+    <p:chart type="line" model="#{chartViewBean.lineModel1}" style="height:300px;"/> 
+    
+   <p:chart type="line" model="#{chartViewBean.lineModel2}" style="height:300px;"/>
+	
+   <p:chart type="bar" model="#{chartViewBean.lineModel3}" style="height:500px;"/>
+
+    
+</html>

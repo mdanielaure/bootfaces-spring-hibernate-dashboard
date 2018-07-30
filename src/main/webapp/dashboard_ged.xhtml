@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:b="http://bootsfaces.net/ui">
+	<h:head>
+	</h:head>
+	<h:body>
+		
+		<b:container layout="fluid">
+			<b:row span="12">
+				<b:panel>
+					<h4> Statistiques des flux GED</h4>
+				</b:panel>
+			</b:row>
+			
+			<b:row span="12">
+				<h:form id="formChart" >
+					<b:panel>
+						<b:row>
+							<b:column medium-screen="1">
+								<h:outputLabel for="year" value="Year : " />
+							</b:column>
+							<b:column medium-screen="1">
+								<b:inputText id="year" value="#{chartViewBean.year}"/>
+							</b:column>
+							<b:column medium-screen="1">
+								<h:outputLabel for="ymax" value="Ymax : " />
+							</b:column>
+							<b:column medium-screen="1">
+								<b:inputText id="ymax" value="#{chartViewBean.ymax}"/>
+							</b:column>
+							<b:column medium-screen="1">
+								<b:commandButton id="send" value="Send" action="#{chartViewBean.refreshChart}" ajax="true" update="@form" look="primary"/>
+							</b:column>
+						</b:row>
+					</b:panel>
+					      
+			    	<b:dataTable value="#{chartViewBean.sourcesList}" var="row">
+			    	 	<b:dataTableColumn value="#{row.source}" />
+					    <b:dataTableColumn value="#{row.mois}" />
+					    <b:dataTableColumn value="#{row.nbDoc}" />
+				    </b:dataTable>
+				    
+				    <p:chart type="line" model="#{chartViewBean.lineModel1}" style="height:300px;"/> 
+				    
+				    <p:chart type="line" model="#{chartViewBean.lineModel2}" style="height:300px;"/>
+					
+				    <p:chart type="bar" model="#{chartViewBean.lineModel3}" style="height:500px;"/>
+
+  				</h:form>
+			</b:row>
+		</b:container>
+		
+	</h:body>
+</html>
